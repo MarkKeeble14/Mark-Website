@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/bio.css" />
+    <link rel="stylesheet" href="css/forms.css" />
+    <link rel="stylesheet" href="css/experience.css" />
+    <link rel="stylesheet" href="css/script.css" />
+    <link rel="stylesheet" href="css/script-timer.css" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/upload-file.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <link rel="icon" href="images/icon.png">
+    <title>Mark Keeble, BCIT CST | Game, Web, Software Dev.</title>
+  </head>
+  <body>
+    <header>
+    </header>
+    <div id='overlay-components-container'>
+      <nav>
+        <a id='name-logo' class="home-page-active"><h2>Mark Keeble</h2></a>
+        <a id='resume-button' href="files/Resume.pdf" target="_blank" class="overlay-item home-page-active"><h2>Resume</h2></a>
+        <a id='projects-button' class="overlay-item home-page-active db-loading"><h2>Projects</h2></a>
+      </nav>
+      <footer id='footer'>
+        <a id='contact-button' href= "mailto:markkeeble14@gmail.com" class="overlay-item home-page-active"><h2>Say Hello</h2></a>
+        <div id='socials-container'>
+          <a id='github-button' href="https://github.com/MarkKeeble14" target="_blank" class="home-page-active"><img src="images/github.png" alt="github"></a>
+          <a id='linkedin-button' href="https://www.linkedin.com/in/markkeeble/" target="_blank" class="home-page-active"><img src="images/li.png" alt="linkedin"></a>
+          <a id='twitter-button' href="https://twitter.com/Or1beau" target="_blank" class="home-page-active"><img src="images/twit.png" alt="twitter"></a>
+          <a id='instagram-button' href="https://www.instagram.com/keeble.mark/" target="_blank" class="home-page-active"><img src="images/ig.png" alt="instagram"></a>
+        </div>
+      </footer>
+      <div style="pointer-events: all;">
+        <p id='add-languages-tag' class='do-on-click hide-while-not-editing no-display'
+              style="position: absolute; top: 10%; right: 2%; z-index: 20;">Add Language</p>
+        <p id='add-frameworks-tools-tag' class='do-on-click hide-while-not-editing no-display'
+              style="position: absolute; top: 14%; right: 2%; z-index: 20;">Add Tool/Framework</p>
+        <p id='add-project' class='do-on-click hide-while-not-editing no-display'
+              style="position: absolute; top: 18%; right: 2%; z-index: 20;">Add Project</p>
+      </div>
+    </div>
+    <div id='home-page' class="page-active page">
+      <div id='divCountdownBar' class="timer-off-screen">
+        <div id='divTimeLeft'>
+        </div>
+      </div>
+      <div id='tools-technologies-view-container'>
+        <h2 id='technologies-text-container'></h2>
+        <div style="width: 100vw; height: 100vh;">
+          <div id='languages-container'>
+            <div id='languages-tags-container' class='tag-group above-screen'>
+            </div>
+          </div>
+          <div id='tools-frameworks-container'>
+            <div id='frameworks-tools-tags-container' class='tag-group above-screen'>
+            </div>
+          </div>
+        </div>
+        <div id="home-forms">
+          <div id='tag-form-container' class="hidden-form hidden">
+            <form id='tag-form'>
+              <div class="labled">
+                <label for="tag" style="color: black; " id='tag-label' name='tag'></label>
+                <input type="text" placeholder="Enter Tag" id='tag'>
+              </div>
+              <div class="labled">
+                <label for="key" style="color: black; " id='key-label' name='key'>key: </label>
+                <input type="text" placeholder="Enter Key" id='key'>  
+              </div>
+              <input type="submit">
+              <input type="button" value="Cancel" onclick="HideTagForm()">
+            </form>
+          </div>
+        </div>
+        <div id='project-forms'>
+          <div id='project-form-container' class="hidden-form hidden">
+            <form id='project-form'>
+              <div class="labled">
+                <label for="title" style="color: black; " id='title-label' name='title'>title: </label>
+                <input type="text" placeholder="Enter Title" id='title'>
+              </div>
+              <div class="labled">
+                <label for="abv" style="color: black; " id='abv-label' name='abv'>abv: </label>
+                <input type="text" placeholder="Enter Abbrehviation" id='abv'>
+              </div>
+              <div id='project-form-image-upload-container' class="upload-container">
+                <input type="file" value='upload' id='project-file-button'>
+                <progress value='0' max='100' id='project-file-uploader'>0%</progress>
+              </div>
+              <div class="labled">
+                <label for="desc" style="color: black; " id='desc-label' name='desc'>description: </label>
+                <input type="text" placeholder="Enter Description" id='desc'>
+              </div>
+              <div class="labled">
+                <label for="cata" style="color: black; " id='cata-label' name='cata'>catagory: </label>
+                <input type="text" placeholder="Enter Catagory" id='cata'>
+              </div>
+              <div class="labled">
+                <label for="link" style="color: black; " id='link-label' name='link'>Link: </label>
+                <input type="text" placeholder="Enter Link" id='link'>
+              </div>
+              <div id='project-form-tag-list-container'>
+                  <div id='project-form-languages-list-container'>
+                  </div>
+                  <div id='project-form-t-and-f-list-container'>
+                  </div>
+              </div>
+              <div class="labled">
+                <label for="project-key" style="color: black; " id='project-key-label' name='key'>key: </label>
+                <input type="text" placeholder="Enter Key" id='project-key'>  
+              </div>
+              <input type="submit">
+              <input type="button" value="Cancel" onclick="ToggleProjectForm()">
+            </form>
+          </div>
+        </div>
+      </div>
+      <div id='page-container' class="filter-overlay page">
+        <div id='body-container'>
+          <div id='script-controller'>
+            <a id='languages-button' class="db-loading"><h2>Languages</h2></a>
+            <a id='about-button'><h2>About</h2></a>
+            <a id='t-and-f-button' class="db-loading"><h2>Tools and Frameworks</h2></a>
+          </div>
+          <div id='bio-container'>
+            <h3 id='script-text-container'></h3>
+          </div>
+        </div>
+    </div>
+    </div>
+    <div id='projects-page' class="page-inactive page">
+      <div id='project-card-list-container'></div>
+      <div id='active-project-card-container'>
+        <a id='active-project-link'><h1 id='active-project-title'></h1></a>
+        <h3 id='active-project-catagory'></h3>
+        <p id='active-project-description'></p>
+        <p id='active-project-date'></p>
+        <div id='active-project-tags'></div>
+        <div id='active-project-image-gallery'></div>
+      </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-storage.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyALxl8HSrDngyTA_PS5X5QgHHm83MRnOnk",
+        authDomain: "personal-1175a.firebaseapp.com",
+        databaseURL: "https://personal-1175a.firebaseio.com",
+        projectId: "personal-1175a",
+        storageBucket: "personal-1175a.appspot.com",
+        messagingSenderId: "745670210179",
+        appId: "1:745670210179:web:75b94f24df4ec5fe6ee1b6",
+        measurementId: "G-69W3K2ECXB"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      
+      const db = firebase.firestore();
+      const storage = firebase.storage();
+      const storageRef = firebase.storage().ref();
+
+      // File Upload
+      var uploader = document.getElementById('project-file-uploader');
+      var fileButton = document.getElementById('project-file-button');
+
+      fileButton.addEventListener('change', function(e) {
+        // Get File
+        var file = e.target.files[0];
+
+        // Create a storage ref
+        var form_abv = $('#abv').val();
+        var path = 'screenshots/' + form_abv + '/' + file.name;
+        var ssStorageRef = storage.ref(path);
+
+        // Upload file
+        var task = ssStorageRef.put(file);
+
+        // Update progress bar
+        task.on('state_changed', 
+          function progress(snapshot) {
+            var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            uploader.value = percentage;
+          },
+          function error(err) {
+
+          },
+          function complete() {
+            db.collection("projects").get().then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                if (doc.data().abv == form_abv) {
+                  var new_images = [ path ];
+                  if (doc.data().images != undefined) {
+                    // Ensure no duplicates
+                    doc.data().images.forEach(function(item, index) {
+                      var duplicate = false;
+                      new_images.forEach(function(item2, index2) {
+                        if (item == item2) {
+                          duplicate = true;
+                        }
+                      });
+                      if (!duplicate) {
+                        new_images.push(item);
+                      }
+                    });
+
+                    db.collection("projects").doc(doc.id).update({
+                      images: new_images
+                    });
+                  } else {
+                    db.collection("projects").doc(doc.id).update({
+                    images: new_images
+                  });
+                  }
+                }
+              });
+           });
+          }
+        );
+      });
+
+      // Fetch Tags
+      db.collection("languages").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              var cur_tag = doc.data().tag;
+              $('#languages-tags-container').append("<div class='indiv-item-container'><p>" + cur_tag + "</p></div>").hide().fadeIn('500');
+
+                // Add Checkboxs
+                $('#project-form-languages-list-container').append("<div class='labeled'><input value='" + doc.data().tag 
+                  + "'type='checkbox' name='" + doc.data().tag + "'> " 
+                    +"<label for='" + doc.data().tag + "'>" + doc.data().tag + "</label></div>");
+          });
+      }).then(function() {
+        var dur = 550 + Math.ceil(Math.random() * 50);
+        setTimeout(function() {
+          $('#languages-button').removeClass('db-loading').addClass('db-loaded');
+        }, dur)
+      });
+
+      db.collection("tools_frameworks").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            var cur_tag = doc.data().tag;
+            $('#frameworks-tools-tags-container').append("<div class='indiv-item-container'><p>" + cur_tag + "</p></div>").hide().fadeIn('500');
+
+                // Add Checkboxs
+                $('#project-form-t-and-f-list-container').append("<div class='labeled'><input value='" + doc.data().tag 
+                  + "'type='checkbox' name='" + doc.data().tag + "'> " 
+                    +"<label for='" + doc.data().tag + "'>" + doc.data().tag + "</label></div>");
+          });
+      }).then(function() {
+        var dur = 550 + Math.ceil(Math.random() * 50);
+        setTimeout(function() {
+          $('#t-and-f-button').removeClass('db-loading').addClass('db-loaded');
+        }, dur)
+      });
+      
+      // Fetch Projects
+      db.collection("projects").get().then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            var title = doc.data().title;
+            var desc = doc.data().description;
+            var tags = doc.data().tags;
+            var cata = doc.data().catagory;
+            var date = doc.data().date;
+            var link = doc.data().link;
+            var images = doc.data().images;
+            var id = doc.data().abv + "-project-card";
+
+            if (images != undefined) {
+                storageRef.child(images[0]).getDownloadURL().then(function(url) {
+                  $('#project-card-list-container').append("<div class='indiv-project-container' id='" + id + "'>" 
+                    + "<img src='" + url + "' alt='" + title + "'>" 
+                    + "<div><h4>" + title + "</h4><p>" + cata + "</p></div></div>").hide().fadeIn('500');
+                }).then(function() {
+                  $('#' + id).on('click', function() {
+                  $('#active-project-link').attr("href", link).attr('target', 'blank_');
+                  $('#active-project-title').html(title);
+                  $('#active-project-description').html(desc);
+                  $('#active-project-date').html('Uploaded on: ' + date);
+                  $('#active-project-catagory').html(cata);
+                  $('#active-project-tags').html('');
+                  $('#active-project-image-gallery').html('');
+
+                  tags.forEach(ShowTag);
+
+                  function ShowTag(item, index) {
+                    $('#active-project-tags').append('<p>' + item + '</p>');
+                  }
+                  if (images != undefined) {
+                    images.forEach(function(item, index) {
+                      storageRef.child(item).getDownloadURL().then(function(url) {
+                        $('#active-project-image-gallery').append("<img src='" + url + " alt='" + url + "'>").hide().fadeIn('500');
+                      }).catch(function(error) {
+                        console.log(error);
+                      });
+                    });
+                  }
+                });
+              });
+            }
+          });
+      }).then(function() {
+        var dur = 800 + Math.ceil(Math.random() * 100);;
+        setTimeout(function() {
+          $('#projects-button').removeClass('db-loading').addClass('db-loaded');
+        }, dur)
+      })
+
+      // Handle Submit for Tag Form
+      $("#tag-form").submit(function(e) {
+          e.preventDefault();
+          
+          var entered_key = $('#key').val();
+          if (entered_key == 'cfdfdc362a26f7cb86f34f060cb325e3059535809d1d17043c44a57b93b357f0') {
+            var new_tag = $('#tag').val();
+          
+            db.collection(active).add({
+              tag: new_tag
+            });
+            alert('success');
+
+            HideTagForm();
+          } else {
+            alert('invalid');
+          };
+      });
+
+      // Handle Submit for Tag Form
+      $("#project-form").submit(function(e) {
+          e.preventDefault();
+
+          var entered_key = $('#project-key').val();
+          if (entered_key == 'cfdfdc362a26f7cb86f34f060cb325e3059535809d1d17043c44a57b93b357f0') {
+            var new_title = $('#title').val();
+            var new_catagory = $('#cata').val();
+            var new_desc = $('#desc').val();
+            var new_link = $('#link').val();
+            var new_abv = $('#abv').val();
+
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date + ' ' + time;
+          
+            let new_tags = (function() {
+                let a = [];
+                $("input:checkbox:checked").each(function() { 
+                    a.push(this.value);
+                });
+                return a;
+            })()
+
+            db.collection('projects').add({
+              title: new_title,
+              abv: new_abv,
+              catagory: new_catagory,
+              link: new_link,
+              description: new_desc,
+              date: dateTime,
+              tags: new_tags
+            });
+
+            alert('success');
+            ToggleProjectForm();
+          } else {
+            alert('invalid');
+          };
+      });
+    </script>
+    <script>
+      document.addEventListener('keypress', logKey);
+
+      var one = 101;
+      var two = 100;
+      var three = 105;
+      var four = 116;
+      var five = 13;
+
+      var one_pressed;
+      var two_pressed;
+      var three_pressed;
+      var four_pressed;
+      var five_pressed;
+
+      function logKey(event) {
+        var key_pressed = event.keyCode;
+
+        if (key_pressed == one) {
+          one_pressed = true;
+
+          setTimeout(ResetVariables, 2000);
+        }
+
+        if (one_pressed && key_pressed == two) {
+          two_pressed = true;
+        }
+
+        if (two_pressed && key_pressed == three) {
+          three_pressed = true;
+        }
+
+        if (three_pressed && key_pressed == four) {
+          four_pressed = true;
+        }
+
+        if (four_pressed && key_pressed == five) {
+          five_pressed = true;
+          $('.hide-while-not-editing').removeClass('no-display');
+          $('.hide-while-not-editing').addClass('block-display');
+        }
+
+        function ResetVariables() {
+          if (!five_pressed) {
+            one_pressed = false;
+            two_pressed = false;
+            three_pressed = false;
+            four_pressed = false;
+          }
+        }
+      }
+    </script>
+    <script>
+      var active = '';
+      function ShowTagForm() {
+        $('#tag-label').html(active + ' tag: ');
+        $('#tag-form-container').removeClass('hidden');
+        $('#tag-form-container').addClass('shown');
+      }
+
+      function HideTagForm() {
+        $('#tag-form-container').addClass('hidden');
+        $('#tag-form-container').removeClass('shown');
+      }
+
+      function ToggleProjectForm() {
+        $('#project-form-container').toggleClass('hidden');
+        $('#project-form-container').toggleClass('shown');
+      }
+      
+      $('#add-languages-tag').on('click', function() {
+        active = 'languages';
+        ShowTagForm();
+      });
+
+      $('#add-frameworks-tools-tag').on('click', function() {
+        active = 'tools_frameworks';
+        ShowTagForm();
+      });
+
+      $('#add-project').on('click', function() {
+        ToggleProjectForm();
+      });
+    </script>
+    <script>
+      function ToggleActivePage() {
+        $('#home-page').toggleClass('page-active');
+        $('#home-page').toggleClass('page-inactive');
+
+        $('#projects-page').toggleClass('page-active');
+        $('#projects-page').toggleClass('page-inactive');
+
+        $('#contact-button').toggleClass('home-page-active');
+        $('#contact-button').toggleClass('projects-page-active');
+
+        $('#name-logo').toggleClass('home-page-active');
+        $('#name-logo').toggleClass('projects-page-active');
+
+        $('#projects-button').toggleClass('home-page-active');
+        $('#projects-button').toggleClass('projects-page-active');
+
+        $('#resume-button').toggleClass('home-page-active');
+        $('#resume-button').toggleClass('projects-page-active');
+
+        $('#github-button').toggleClass('home-page-active-socials');
+        $('#github-button').toggleClass('projects-page-active-socials');
+
+        $('#linkedin-button').toggleClass('home-page-active-socials');
+        $('#linkedin-button').toggleClass('projects-page-active-socials');
+
+        $('#twitter-button').toggleClass('home-page-active-socials');
+        $('#twitter-button').toggleClass('projects-page-active-socials');
+
+        $('#instagram-button').toggleClass('home-page-active-socials');
+        $('#instagram-button').toggleClass('projects-page-active-socials');
+
+        $('#add-languages-tag').toggleClass('home-page-active');
+        $('#add-languages-tag').toggleClass('projects-page-active');
+
+        $('#add-frameworks-tools-tag').toggleClass('home-page-active');
+        $('#add-frameworks-tools-tag').toggleClass('projects-page-active');
+
+        $('#add-project').toggleClass('home-page-active');
+        $('#add-project').toggleClass('projects-page-active');
+      }
+
+      $('#projects-button').on('click', function() {
+        if (!interrupted) {
+          interrupted = true;
+        } else {
+          interrupted = false;
+        }
+        ToggleActivePage();
+      });
+
+      $('#name-logo').on('click', function() {
+        if (!interrupted) {
+          interrupted = true;
+        } else {
+          interrupted = false;
+        }
+        ToggleActivePage();
+      });
+    </script>
+    <script>
+      function AnimateTextContainer(text, duration) {
+        if (text == '') {
+          interrupted = false;
+          $('#page-container').removeClass('darken-filter');
+          $('#overlay-components-container').removeClass('darken-filter');
+          $('#languages-tags-container').removeClass('on-screen').addClass('below-screen');
+          $('#frameworks-tools-tags-container').removeClass('on-screen').addClass('below-screen');
+          $('#technologies-text-container').addClass('fade-out-up').removeClass('fade-in-up-start');
+        } else {
+          interrupted = true;
+          $('#page-container').addClass('darken-filter');
+          $('#overlay-components-container').addClass('darken-filter');
+          $('#technologies-text-container').addClass('fade-out-up').removeClass('fade-in-up-start');
+          setTimeout(function () {
+            $('#technologies-text-container').removeClass('fade-out-up').addClass('fade-in-up-start');
+            $('#technologies-text-container').html(text);
+          }, duration);
+        }
+      }
+
+      $('#t-and-f-button').on('click', function() {
+        if ($('#t-and-f-button').hasClass('db-loaded')) {
+
+          if ($('#frameworks-tools-tags-container').hasClass('on-screen')) {
+            $('#t-and-f-button').removeClass('active-button');
+            AnimateTextContainer('', 500); 
+          } else {
+            $('#t-and-f-button').addClass('active-button');
+            $('#about-button').removeClass('active-button');
+            $('#languages-button').removeClass('active-button');
+            AnimateTextContainer('Tools and Frameworks', 500);
+
+            // Bring T/F onto screen
+            $('#frameworks-tools-tags-container').removeClass('above-screen').addClass('on-screen').removeClass('below-screen');
+
+            // Remove Languages from screen
+            if ($('#languages-tags-container').hasClass('on-screen')) 
+              $('#languages-tags-container').removeClass('on-screen').addClass('below-screen');
+            setTimeout(function() {
+              $('#languages-tags-container').addClass('above-screen');
+            }, 500);
+          }
+        };
+      });
+      $('#languages-button').on('click', function() {
+        if ($('#languages-button').hasClass('db-loaded')) {
+          if ($('#languages-tags-container').hasClass('on-screen')) {
+            $('#languages-button').removeClass('active-button');
+            AnimateTextContainer('', 500); 
+          } else {
+            $('#t-and-f-button').removeClass('active-button');
+            $('#about-button').removeClass('active-button');
+            $('#languages-button').addClass('active-button');
+            AnimateTextContainer('Languages', 500);
+
+            // Bring Languages onto screen
+            $('#languages-tags-container').removeClass('above-screen').addClass('on-screen').removeClass('below-screen');
+
+            // Remove T/F from screen
+            if ($('#frameworks-tools-tags-container').hasClass('on-screen')) 
+              $('#frameworks-tools-tags-container').removeClass('on-screen').addClass('below-screen');
+            setTimeout(function() {
+              $('#frameworks-tools-tags-container').addClass('above-screen');
+            }, 500);
+          }
+        }
+      });
+    </script>
+    <script>
+      var sentences = [   "",
+                          "Hey! My name is Mark Keeble and I'm an BCIT <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a> student, as well as an aspiring developer with experience in game dev, software dev, and web dev.", 
+                          "I've had an interest in technology as far back as I can remember, which helped me breed the passion I feel for the industry today. " +
+                          "I specifically love the world of game development and spend as much time as I can developing my concepts into digital worlds!", 
+                          "Currently I'm in my third term of <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a>. " 
+                              + "The program exposes students to the various facets of the software industry such as databases, web development, and software development. " 
+                              + "The program also tries to expose students to the kind of environment we'll find in the industry. " 
+                              + "</br></br>On top of the program, I always try to keep myself busy with personal projects, which you can find a few of on this website. "
+                              + "I do my best to both constantly grow as a person and to enhance my knowledge of the technologies used throughout the industry. " 
+                              + "</br></br>Feel free to take a look at my projects and send me an email with any questions or inquiries about collaboration, or anything of the like!"
+                      ];
+      var timeToRead = [  0,
+                          0.0125,
+                          2.5,
+                          15
+                        ]
+      var x = 0;
+      var interrupted;
+      var barAtZero = true;
+      function AdvanceScript() {
+        interrupted = false;
+
+        // Reset Other Script Controls
+        $('#page-container').removeClass('darken-filter');
+        $('#overlay-components-container').removeClass('darken-filter');
+        $('#technologies-text-container').addClass('hidden').removeClass('shown').removeClass('fade-in-up-start');
+        $('#frameworks-tools-tags-container').addClass('below-screen').removeClass('on-screen');
+        $('#languages-tags-container').addClass('below-screen').removeClass('on-screen');
+
+        if (barAtZero || x == 0) {
+          // Animate Script Text Container
+          $('#script-text-container').addClass('fade-out-up');
+          $('#script-text-container').removeClass('fade-in-up-start');
+
+          setTimeout(function () {
+            x++;
+              if (x == 4) {
+                x = 0;
+                $('#divCountdownBar').addClass('timer-off-screen').removeClass('timer-on-screen');
+              } else {
+                initBarCount(timeToRead[x]);
+              }
+            
+            $('#script-text-container').html(sentences[x]);
+            $('#script-text-container').addClass('fade-in-up-start');
+            $('#script-text-container').removeClass('fade-out-up');
+          }, 300);
+        } else {
+            x++;
+
+            // Reset 
+            ResetBarCount();
+            
+            $('#script-text-container').html(sentences[x]);
+            $('#script-text-container').addClass('fade-in-up-start');
+            $('#script-text-container').removeClass('fade-out-up');
+          }
+      }
+
+      $('#about-button').on('click', function() {
+        $('#about-button').addClass('active-button');
+        $('#languages-button').removeClass('active-button');
+        $('#t-and-f-button').removeClass('active-button');
+        
+        if (x == 0) {
+          AdvanceScript();
+        }
+      });
+
+      function initBarCount(speed) {
+        var divTimeLeft = document.getElementById('divTimeLeft');
+        var divCountdownBar = document.getElementById('divCountdownBar');
+        var startTimer = setInterval(barCount, speed);
+        const fullWidth = divCountdownBar.style.width;
+
+        $('#divCountdownBar').removeClass('timer-off-screen').addClass('timer-on-screen');
+        function barCount() {
+          if (!interrupted) {
+            if (divTimeLeft.clientWidth < divCountdownBar.clientWidth) {
+            divTimeLeft.style.width = divTimeLeft.clientWidth + 1 + "px";
+            } else {
+              divTimeLeft.style.width = divCountdownBar.clientWidth + "px";
+              ResetBarCount();
+            }
+          }
+        }
+
+        function ResetBarCount() {
+          clearInterval(startTimer);
+          AdvanceScript();
+          barAtZero = true;
+          if (x != 3) {
+            divTimeLeft.style.width = fullWidth;
+          } else {
+            $('#about-button').removeClass('active-button');
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+header {
+    height: 100vh;
+    background-color: #111111;
+
+    overflow-y: hidden;
+}
+
+header:after {
+    content: "";
+    background-image: url(http://api.thumbr.it/whitenoise-361x370.png?background=000000ff&noise=919191&density=20&opacity=27);
+    
+    height: 300%;
+    width: 300%;
+    
+    opacity: 0.15;
+    position: fixed;
+
+    animation: grain 3s steps(12) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { transform:translate(0%, 0%) }
+    50% { transform:translate(-15%, -15%) }
+
+}   

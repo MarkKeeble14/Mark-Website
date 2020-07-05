@@ -1,0 +1,90 @@
+#script-controller {
+    position: absolute;
+    left: 50%;
+    width: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    text-align: center;
+}
+
+@media only screen and (min-width: 720px) {
+    #script-controller {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        top: 75%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    #script-controller {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        top: 55%;
+    }
+}
+
+
+.db-loading {
+    pointer-events: none!important;
+    color: gray;
+    cursor: auto;
+}
+
+.db-loaded {
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.active-button {
+    color: #449DD1;
+    transition: all 0.5s;
+}
+
+#script-controller > a {
+    position: relative;
+    text-decoration: none;
+
+    transition: all 0.5s;
+}
+
+#script-text-container {
+    font-size: 18px;
+    line-height: 32px;
+}
+
+#script-text-container > a {
+    color: white;
+}
+
+#script-controller > a:before, #script-controller > a:after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: white;
+}
+
+#script-controller > a:before {
+    opacity: 0;
+    transform: translateY(- 8px);
+    transition: transform 0s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s;
+}
+#script-controller > a:after {
+    opacity: 0;
+    transform: translateY(4px);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#script-controller > a:hover:before, #script-controller > a:focus:before, 
+    #script-controller > a:hover:after, #script-controller > a:focus:after {
+        opacity: 1;
+        transform: translateY(0);
+    }
+#script-controller > a:hover:before, #script-controller > a:focus:before {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s;
+}
+#script-controller > a:hover:after, #script-controller > a:focus:after {
+    transition: transform 0s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0s 0.2s;
+}

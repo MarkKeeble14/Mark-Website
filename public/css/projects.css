@@ -1,0 +1,131 @@
+@media only screen and (max-width: 960px) {
+    #projects-page {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media only screen and (min-width: 960px) {
+    #projects-page {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+#projects-page > div {
+    padding: 2%;
+}
+
+#project-card-list-container {
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+
+    overflow-y: scroll;
+}
+
+#project-card-list-container > div {
+    cursor: pointer;
+    transition: all .125s;
+}
+
+#project-card-list-container > div:hover {
+    transform: scale(1.025);
+    transition: all .075s;
+}
+
+.indiv-project-container {
+    display: grid;
+    grid-template-columns: 20% auto;
+
+    background-color: #eeeeee;
+    color: black;
+
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    margin-left: 2%;
+    margin-right: 2%;
+
+    height: fit-content;
+}
+
+.indiv-project-container > img {
+    width: 100%; /* width of container */
+    height: 100%;
+    object-fit: cover;
+}
+
+.indiv-project-container > div {
+    margin-left: 2%;
+}
+
+.indiv-project-container > div > p {
+    float: right;
+    margin-right: 2%;
+}
+
+#active-project-card-container {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+
+    padding: 4%!important;
+    overflow-y: scroll!important;
+    background-color: white;
+    color: black;
+}
+
+#active-project-catagory {
+    text-align: center;
+}
+
+#active-project-tags {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    margin: 2%;
+}
+
+#active-project-tags > p {
+    display: block;
+    width: fit-content;
+    font-size: 16px;
+}
+
+#active-project-image-gallery {
+overflow-y: visible;
+    width: 100%;  
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#active-project-image-gallery > img {
+    display: block;
+    width: 70%;
+    border-radius: 1px;
+    margin: 0 auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+
+    -webkit-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.75);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
+#active-project-link {
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+#active-project-link:hover {
+    text-decoration: black underline;
+}

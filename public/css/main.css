@@ -1,0 +1,186 @@
+/* Colors
+Dark Sky Blue #78C0E0
+Carolina Blue #449DD1
+Navy Blue #150578
+Midnight Blue #0E0E52
+Denim Blue #3943B7
+
+Background #111111
+*/
+
+@import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body {
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: Lato, sans-serif;
+
+    color: white;
+
+    overflow-y: hidden;
+}
+
+a {
+    cursor: pointer;
+}
+
+.overlay-item {
+    text-decoration: none;
+}
+
+.home-page-active {
+    color: white;
+    filter: brightness(1);
+    transition: all .25s;
+}
+
+.home-page-active:hover {
+    filter: brightness(0.35);
+    transition: all .25s;
+}
+
+.projects-page-active {
+    color: white;
+    filter: brightness(1);
+    transition: all .25s;
+}
+
+.projects-page-active:hover {
+    filter: brightness(0.35);
+    transition: all .25s;
+}
+
+@media only screen and (min-width: 720px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 8px;
+    }
+}
+
+.hidden {
+    opacity: 0;
+
+    pointer-events: none;
+    transition: all .5s;
+}
+
+.shown {
+    opacity: 1;
+
+    pointer-events: all;
+    transition: all .25s;
+}
+
+.no-display {
+    display: none;
+}
+
+.block-display {
+    display: block;
+}
+
+.fade-in-up-start {
+    opacity: 0;
+    transform: translateY(-20px);
+
+    transition: all 0.45s;
+}
+
+.fade-in-up-start {
+    opacity: 1;
+    transform: translateY(0px);
+
+    transition: all 0.45s;
+}
+
+.fade-out-up {
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition: all 0.45s;
+}
+
+.do-on-click {
+    cursor: pointer;
+}
+
+.filter-overlay {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100vw;
+    height: 100vh;
+    transition: all .5s;
+}
+
+.darken-filter {
+    filter: brightness(0.05);
+    transition: all .5s;
+}
+
+.blur-filter {
+    filter: blur(4px);
+    transition: all .5s;
+}
+
+#overlay-components-container {
+    position: absolute;
+    top: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+
+    pointer-events: none;
+
+    transition: all 1s;
+}
+
+.page {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+}
+
+.page-active {
+    top: 0%;
+    opacity: 1;
+    transform: scale(1);
+
+    transition: all .75s ease-in-out;
+
+    pointer-events: all;
+}
+
+.page-inactive {
+    top: -400px;
+    opacity: 0;
+    transform: scale(1.05);
+
+    transition: all .75s ease-in-out;
+
+    pointer-events: none;
+}

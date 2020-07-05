@@ -1,0 +1,45 @@
+nav {
+    text-align: center;
+    width: 100vw;
+}
+
+nav > a {
+    pointer-events: all;
+    position: absolute;
+}
+
+@media only screen and (min-width: 720px) {
+    nav > a {
+        top: 3%;
+    }
+    
+    #name-logo {
+        left: 3%;
+    }
+    
+    #resume-button {
+        left: 20%;
+    }
+    
+    #projects-button {
+        right: 3%;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    nav > a {
+        top: 1%;
+    }
+    
+    #name-logo {
+        left: 3%;
+    }
+    
+    #resume-button {
+        left: 45%;
+    }
+    
+    #projects-button {
+        right: 3%;
+    }
+}
