@@ -1,3 +1,4 @@
+var PORT = process.env.PORT || 3000;
 const express = require("express");
 
 let app = express();
@@ -9,4 +10,4 @@ app.get("/", (req, res)=> res.render("pages/index"));
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(3000);
+app.listen(PORT);
