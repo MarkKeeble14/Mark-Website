@@ -527,18 +527,30 @@
       });
     </script>
     <script>
+      $('#technologies-text-container').on('click', function() {
+        if (interrupted) {
+          interrupted = false;
+        }
+        $('#page-container').removeClass('blur-filter');
+        $('#overlay-components-container').removeClass('blur-filter');
+        $('#technologies-text-container').addClass('hidden').removeClass('shown').removeClass('fade-in-up-start');
+        $('#frameworks-tools-tags-container').addClass('below-screen').removeClass('on-screen');
+        $('#languages-tags-container').addClass('below-screen').removeClass('on-screen');
+        $('#t-and-f-button').removeClass('active-button');
+        $('#languages-button').removeClass('active-button');
+      });
       function AnimateTextContainer(text, duration) {
         if (text == '') {
           interrupted = false;
-          $('#page-container').removeClass('darken-filter');
-          $('#overlay-components-container').removeClass('darken-filter');
+          $('#page-container').removeClass('blur-filter');
+          $('#overlay-components-container').removeClass('blur-filter');
           $('#languages-tags-container').removeClass('on-screen').addClass('below-screen');
           $('#frameworks-tools-tags-container').removeClass('on-screen').addClass('below-screen');
           $('#technologies-text-container').addClass('fade-out-up').removeClass('fade-in-up-start');
         } else {
           interrupted = true;
-          $('#page-container').addClass('darken-filter');
-          $('#overlay-components-container').addClass('darken-filter');
+          $('#page-container').addClass('blur-filter');
+          $('#overlay-components-container').addClass('blur-filter');
           $('#technologies-text-container').addClass('fade-out-up').removeClass('fade-in-up-start');
           setTimeout(function () {
             $('#technologies-text-container').removeClass('fade-out-up').addClass('fade-in-up-start');
@@ -597,7 +609,7 @@
     </script>
     <script>
       var sentences = [   "",
-                          "Hey! My name is Mark Keeble and I'm an BCIT <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a> student, as well as an aspiring developer with experience in game dev, software dev, and web dev.", 
+                          "Hey! My name is Mark Keeble and I'm a BCIT <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a> student, as well as an aspiring developer with experience in game dev, software dev, and web dev.", 
                           "I've had an interest in technology as far back as I can remember, which helped me breed the passion I feel for the industry today. " +
                           "I specifically love the world of game development and spend as much time as I can developing my concepts into digital worlds!", 
                           "Currently I'm in my third term of <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a>. " 
@@ -619,8 +631,8 @@
         interrupted = false;
 
         // Reset Other Script Controls
-        $('#page-container').removeClass('darken-filter');
-        $('#overlay-components-container').removeClass('darken-filter');
+        $('#page-container').removeClass('blur-filter');
+        $('#overlay-components-container').removeClass('blur-filter');
         $('#technologies-text-container').addClass('hidden').removeClass('shown').removeClass('fade-in-up-start');
         $('#frameworks-tools-tags-container').addClass('below-screen').removeClass('on-screen');
         $('#languages-tags-container').addClass('below-screen').removeClass('on-screen');

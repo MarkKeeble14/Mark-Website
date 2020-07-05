@@ -5,11 +5,14 @@
 
     font-size: 48px;
     z-index: 10;
+
+    cursor: pointer;
+    pointer-events: all;
 }
 
 #languages-tags-container {
     position: absolute;
-    top: 7%;
+    top: 9%;
     left: 3%;
     font-size: 48px;
     z-index: 10;
@@ -17,7 +20,7 @@
 
 #frameworks-tools-tags-container {
     position: absolute;
-    top: 7%;
+    top: 9%;
     left: 3%;
     font-size: 48px;
     z-index: 10;
@@ -40,6 +43,7 @@
 .indiv-item-container {
     margin-left: 10%;
     margin-right: 10%;
+    margin-bottom: 15%;
     height: fit-content;
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
