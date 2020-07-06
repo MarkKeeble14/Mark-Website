@@ -26,8 +26,7 @@
     </header>
     <div id='overlay-components-container'>
       <nav>
-        <a id='name-logo' class="home-page-active"><h2>Mark Keeble</h2></a>
-        <a id='resume-button' href="files/Resume.pdf" target="_blank" class="overlay-item home-page-active"><h2>Resume</h2></a>
+        <a id='name-logo' class="home-page-active db-loading"><h2>Mark Keeble</h2></a>
         <a id='projects-button' class="overlay-item home-page-active db-loading"><h2>Projects</h2></a>
       </nav>
       <footer id='footer'>
@@ -55,7 +54,7 @@
       </div>
       <div id='tools-technologies-view-container'>
         <h2 id='technologies-text-container'></h2>
-        <div style="width: 100vw; height: 100vh;">
+        <div>
           <div id='languages-container'>
             <div id='languages-tags-container' class='tag-group above-screen'>
             </div>
@@ -315,11 +314,12 @@
             }
           });
       }).then(function() {
-        var dur = 800 + Math.ceil(Math.random() * 100);;
+        var dur = 800 + Math.ceil(Math.random() * 100);
         setTimeout(function() {
           $('#projects-button').removeClass('db-loading').addClass('db-loaded');
-        }, dur)
-      })
+          $('#name-logo').removeClass('db-loading').addClass('db-loaded');
+        }, dur);
+      });
 
       // Handle Submit for Tag Form
       $("#tag-form").submit(function(e) {
@@ -483,9 +483,6 @@
         $('#projects-button').toggleClass('home-page-active');
         $('#projects-button').toggleClass('projects-page-active');
 
-        $('#resume-button').toggleClass('home-page-active');
-        $('#resume-button').toggleClass('projects-page-active');
-
         $('#github-button').toggleClass('home-page-active-socials');
         $('#github-button').toggleClass('projects-page-active-socials');
 
@@ -609,20 +606,21 @@
     </script>
     <script>
       var sentences = [   "",
-                          "Hey! My name is Mark Keeble and I'm a BCIT <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a> student, as well as an aspiring developer with experience in game dev, software dev, and web dev.", 
-                          "I've had an interest in technology as far back as I can remember, which helped me breed the passion I feel for the industry today. " +
-                          "I specifically love the world of game development and spend as much time as I can developing my concepts into digital worlds!", 
+                          "Hey! My name is Mark Keeble and I'm a BCIT <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a> student, " 
+                          + "as well as an aspiring developer with experience in game dev, software dev, and web dev. I've had an interest in technology as far back as I can remember, " 
+                            + "which helped me breed the passion I feel for the industry today. I specifically love the world of game development and spend as much time as I can " 
+                              + " developing my concepts into digital worlds!", 
                           "Currently I'm in my third term of <a target='_blank' href='https://www.bcit.ca/study/programs/5500dipma'>CST</a>. " 
                               + "The program exposes students to the various facets of the software industry such as databases, web development, and software development. " 
-                              + "The program also tries to expose students to the kind of environment we'll find in the industry. " 
-                              + "</br></br>On top of the program, I always try to keep myself busy with personal projects, which you can find a few of on this website. "
+                              + "The program also tries to expose students to the kind of environment we'll find in the industry. ", 
+                          "On top of the program, I always try to keep myself busy with personal projects, which you can find a few of on this website. "
                               + "I do my best to both constantly grow as a person and to enhance my knowledge of the technologies used throughout the industry. " 
                               + "</br></br>Feel free to take a look at my projects and send me an email with any questions or inquiries about collaboration, or anything of the like!"
                       ];
       var timeToRead = [  0,
-                          0.0125,
-                          2.5,
-                          15
+                          6,
+                          5,
+                          8
                         ]
       var x = 0;
       var interrupted;

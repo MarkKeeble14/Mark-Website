@@ -15,10 +15,31 @@ footer > div {
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
 
-    width: 10%;
     text-align: center;
 
     pointer-events: all;
+}
+
+@media only screen and (min-width: 1200px) {
+    footer > div {
+        width: 10%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+    footer > div {
+        width: 20%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    footer > div {
+        width: 30%;
+    }
+
+    footer > a > h2 {
+        display: none;
+    }
 }
 
 .home-page-active > img {

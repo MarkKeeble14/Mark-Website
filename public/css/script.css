@@ -15,6 +15,11 @@
         grid-template-columns: repeat(3, 1fr);
         top: 75%;
     }
+
+    #script-text-container {
+        font-size: 18px;
+        line-height: 32px;
+    }
 }
 
 @media only screen and (max-width: 720px) {
@@ -23,8 +28,12 @@
         grid-template-columns: repeat(1, 1fr);
         top: 55%;
     }
+    
+    #script-text-container {
+        font-size: 12px;
+        line-height: 18px;
+    }
 }
-
 
 .db-loading {
     pointer-events: none!important;
@@ -48,11 +57,6 @@
     text-decoration: none;
 
     transition: all 0.5s;
-}
-
-#script-text-container {
-    font-size: 18px;
-    line-height: 32px;
 }
 
 #script-text-container > a {

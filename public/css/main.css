@@ -96,7 +96,7 @@ a {
 }
 
 .no-display {
-    display: none;
+    display: none!important;
 }
 
 .block-display {
@@ -179,7 +179,7 @@ a {
 .page-inactive {
     top: -400px;
     opacity: 0;
-    transform: scale(1.05);
+    transform: scale(0.8);
 
     transition: all .75s ease-in-out;
 

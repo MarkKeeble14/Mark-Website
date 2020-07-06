@@ -1,15 +1,38 @@
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1200px) {
     #projects-page {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
 
+    #project-card-list-container {
+        height: 35vh;
+    }
+
+    #active-project-card-container {
+        height: 50vh;
+    }
+
+    #active-project-tags > p {
+        font-size: 16px;
+    }
+    
+    #active-project-card-container > p {
+        font-size: 18px;
+    }
 }
 
-@media only screen and (min-width: 960px) {
+@media only screen and (min-width: 1200px) {
     #projects-page {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    #active-project-tags > p {
+        font-size: 20px;
+    }
+
+    #active-project-card-container > p {
+        font-size: 24px;
     }
 }
 
@@ -19,7 +42,6 @@
 
 #project-card-list-container {
     margin-top: 10vh;
-    margin-bottom: 10vh;
 
     overflow-y: scroll;
 }
@@ -63,12 +85,13 @@
 .indiv-project-container > div > p {
     float: right;
     margin-right: 2%;
+    font-size: 16px;
 }
 
 #active-project-card-container {
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 5px 15px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 15px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 15px rgba(0,0,0,0.75);
 
     padding: 4%!important;
     overflow-y: scroll!important;
@@ -90,11 +113,10 @@
 #active-project-tags > p {
     display: block;
     width: fit-content;
-    font-size: 16px;
 }
 
 #active-project-image-gallery {
-overflow-y: visible;
+    overflow-y: visible;
     width: 100%;  
     display: flex;
     flex-direction: column;
@@ -124,7 +146,6 @@ overflow-y: visible;
     text-decoration: none;
     text-align: center;
 }
-
 
 #active-project-link:hover {
     text-decoration: black underline;
