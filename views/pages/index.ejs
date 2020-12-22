@@ -107,6 +107,10 @@
                 <label for="link" style="color: black; " id='link-label' name='link'>Link: </label>
                 <input type="text" placeholder="Enter Link" id='link'>
               </div>
+              <div class="labled">
+                <label for="prio" style="color: black; " id='link-label' name='link'>Priority: </label>
+                <input type="number" placeholder="Enter Prio" id='prio'>
+              </div>
               <div id='project-form-tag-list-container'>
                   <div id='project-form-languages-list-container'>
                   </div>
@@ -269,57 +273,72 @@
       });
       
       // Fetch Projects
-      db.collection("projects").get().then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-            var title = doc.data().title;
-            var desc = doc.data().description;
-            var tags = doc.data().tags;
-            var cata = doc.data().catagory;
-            var date = doc.data().date;
-            var link = doc.data().link;
-            var images = doc.data().images;
-            var id = doc.data().abv + "-project-card";
+      async function processDocument(doc) {
+            var title = doc.title;
+            var desc = doc.description;
+            var tags = doc.tags;
+            var cata = doc.catagory;
+            var date = doc.date;
+            var link = doc.link;
+            var images = doc.images;
+            var id = doc.abv + "-project-card";
 
             if (images != undefined) {
-                storageRef.child(images[0]).getDownloadURL().then(function(url) {
+                await storageRef.child(images[0]).getDownloadURL().then(function(url) {
                   $('#project-card-list-container').append("<div class='indiv-project-container' id='" + id + "'>" 
                     + "<img src='" + url + "' alt='" + title + "'>" 
                     + "<div><h4>" + title + "</h4><p>" + cata + "</p></div></div>").hide().fadeIn('500');
                 }).then(function() {
                   $('#' + id).on('click', function() {
-                  $('#active-project-link').attr("href", link).attr('target', 'blank_');
-                  $('#active-project-title').html(title);
-                  $('#active-project-description').html(desc);
-                  $('#active-project-date').html('Uploaded on: ' + date);
-                  $('#active-project-catagory').html(cata);
-                  $('#active-project-tags').html('');
-                  $('#active-project-image-gallery').html('');
+                    $('#active-project-link').attr("href", link).attr('target', 'blank_');
+                    $('#active-project-title').html(title);
+                    $('#active-project-description').html(desc);
+                    $('#active-project-date').html('Uploaded on: ' + date);
+                    $('#active-project-catagory').html(cata);
+                    $('#active-project-tags').html('');
+                    $('#active-project-image-gallery').html('');
 
-                  tags.forEach(ShowTag);
+                    tags.forEach(ShowTag);
 
-                  function ShowTag(item, index) {
-                    $('#active-project-tags').append('<p>' + item + '</p>');
-                  }
-                  if (images != undefined) {
-                    images.forEach(function(item, index) {
-                      storageRef.child(item).getDownloadURL().then(function(url) {
-                        $('#active-project-image-gallery').append("<img src='" + url + " alt='" + url + "'>").hide().fadeIn('500');
-                      }).catch(function(error) {
-                        console.log(error);
+                    function ShowTag(item, index) {
+                      $('#active-project-tags').append('<p>' + item + '</p>');
+                    }
+                    
+                    if (images != undefined) {
+                      images.forEach(function(item, index) {
+                        storageRef.child(item).getDownloadURL().then(function(url) {
+                          $('#active-project-image-gallery').append("<img src='" + url + " alt='" + url + "'>").hide().fadeIn('500');
+                        }).catch(function(error) {
+                          console.log(error);
+                        });
                       });
-                    });
-                  }
+                    }
                 });
               });
             }
+      }
+
+      async function fetch() {
+        db.collection('projects').orderBy('prio').get().then(async function (collections) {
+          var data = [];
+          var tempCollection = [];
+          collections.forEach(collection => {
+              tempCollection.push(collection.data());
           });
-      }).then(function() {
+          for (collection of tempCollection) {
+            console.log(collection);
+            await processDocument(collection);
+          }
+        }).then(function() {
         var dur = 800 + Math.ceil(Math.random() * 100);
         setTimeout(function() {
           $('#projects-button').removeClass('db-loading').addClass('db-loaded');
           $('#name-logo').removeClass('db-loading').addClass('db-loaded');
         }, dur);
       });
+      }
+
+      fetch();
 
       // Handle Submit for Tag Form
       $("#tag-form").submit(function(e) {
@@ -350,6 +369,7 @@
             var new_catagory = $('#cata').val();
             var new_desc = $('#desc').val();
             var new_link = $('#link').val();
+            var new_prio = $('#prio').val();
             var new_abv = $('#abv').val();
 
             var today = new Date();
@@ -372,7 +392,8 @@
               link: new_link,
               description: new_desc,
               date: dateTime,
-              tags: new_tags
+              tags: new_tags,
+              prio: new_prio
             });
 
             alert('success');
